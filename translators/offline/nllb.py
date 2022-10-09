@@ -3,10 +3,13 @@ import torch
 import os
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 from langdetect import detect
+from translators.offline.base_offline_translator import BaseOfflineTranslator
+
+
 
 OFFLINE_TRANSLATOR_MODEL_MAP = {
-    "offline": "facebook/nllb-200-distilled-600M",
-    "offline_big": "facebook/nllb-200-distilled-1.3B",
+    "big": "facebook/nllb-200-distilled-600M",
+    "small": "facebook/nllb-200-distilled-1.3B",
 }
 
 ISO_639_1_TO_FLORES_200 = {
@@ -30,12 +33,18 @@ ISO_639_1_TO_FLORES_200 = {
 	'tr': 'tur_Latn',
 }
 
-class Translator(object):
-    def __init__(self):
+"""
+ This translator uses the No Language Left Behind ML model
+ this acts as a fall 
+"""
+class NLLBTranslator(BaseOfflineTranslator):
+    def __init__(self, model_size):
+        self.model_size = model_size
         self.model_name = None
         self.loaded = False
         self.model = None
         self.tokenizer = None
+        super.__init__(self)
 
     def load(self, translator):
         # Lazy load memory heavy models

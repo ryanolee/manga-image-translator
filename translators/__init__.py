@@ -1,8 +1,9 @@
 
 from typing import List
 import asyncio
+from .offline import offline
 import torch
-from . import baidu, google, youdao, deepl, papago, offline
+from . import baidu, google, youdao, deepl, papago
 
 import googletrans
 
@@ -134,25 +135,27 @@ LANGUAGE_CODE_MAP['papago'] = {
 	'TRK': 'NONE',
 }
 
+# Offline translators use ISO_639_1 as a standardised
+# input
 LANGUAGE_CODE_MAP['offline'] = {
-	'CHS': 'zho_Hans',
-	'CHT': 'zho_Hant',
-	'JPN': "jpn_Jpan",
-	'ENG': 'eng_Latn',
-	'KOR': 'kor_Hang',
-	'VIN': 'vie_Latn',
-	'CSY': 'ces_Latn',
-	'NLD': 'nld_Latn',
-	'FRA': 'fra_Latn',
-	'DEU': 'deu_Latn',
-	'HUN': 'hun_Latn',
-	'ITA': 'ita_Latn',
-	'PLK': 'pol_Latn',
-	'PTB': 'por_Latn',
-	'ROM': 'ron_Latn',
-	'RUS': 'rus_Cyrl',
-	'ESP': 'spa_Latn',
-	'TRK': 'tur_Latn',
+	'CHS': 'zh-cn',
+	'CHT': 'zh-tw',
+	'JPN': "ja",
+	'ENG': 'en',
+	'KOR': 'kn',
+	'VIN': 'vi',
+	'CSY': 'cs',
+	'NLD': 'nl',
+	'FRA': 'fr',
+	'DEU': 'de',
+	'HUN': 'hu',
+	'ITA': 'it',
+	'PLK': 'pl',
+	'PTB': 'pt',
+	'ROM': 'ro',
+	'RUS': 'ru',
+	'ESP': 'es',
+	'TRK': 'tr',
 }
 
 GOOGLE_CLIENT = google.Translator()

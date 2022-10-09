@@ -4,10 +4,12 @@ services:
     build:
       context: ./../../
     container_name: manga_image_translator_localdev
-    command: --verbose --translator=offline --log-web --mode web --manga2eng --use-inpainting --host=0.0.0.0 --port=5003
+    entrypoint: tail -f /dev/null
+    #command: --verbose --translator=offline --log-web --mode web --manga2eng --use-inpainting --host=0.0.0.0 --port=5003
     # Batch Mode
     #command: --mode=batch --verbose --translator=offline --target-lang=ENG --manga2eng --use-inpainting --image "/app/Manga"
     volumes:
+      - ./../../models/:/app/models
       - ./../../result:/app/result
       - ./../../detection:/app/detection
       - ./../../fonts:/app/fonts

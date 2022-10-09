@@ -8,8 +8,7 @@ WORKDIR /app
 # Assume root to install required dependencies
 RUN apt-get update && \
     apt-get install -y git g++ ffmpeg libsm6 libxext6 && \
-    pip install git+https://github.com/lucasb-eyer/pydensecrf.git &&\
-    apt-get remove -y g++
+    pip install git+https://github.com/lucasb-eyer/pydensecrf.git
 
 # Install pip dependencies
 
