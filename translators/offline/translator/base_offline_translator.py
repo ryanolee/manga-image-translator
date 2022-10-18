@@ -39,7 +39,7 @@ class BaseOfflineTranslator(ABC):
     Loads model into memory
     """
     @abstractmethod
-    def is_load(self) -> bool:
+    def is_loaded(self) -> bool:
         pass
 
     
